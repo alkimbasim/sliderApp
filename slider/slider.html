@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <html lang="tr" data-ng-app="homeApp"></html>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <style>
+            *{
+                margin: 0;
+            }
+            #slaytalani{
+                width: 1000px;
+                height: 666px;
+                margin: 50px auto;
+                position: relative;
+                overflow: hidden;
+                border-radius: 5px;
+            }
+            #resim{
+                width: 1000px;
+                height: 666px;
+                position: relative;
+            }
+            .solalani{
+                width: 100px;
+                height: 350px;
+                position: absolute;
+                left: 0px;
+                top: 100px;
+                text-align: left;
+            }
+            .sagalani{
+                width: 100px;
+                height: 350px;
+                position: absolute;
+                right: 0px;
+                top: 100px;
+                text-align: right;
+            }
+            .sol{
+                width: 48px;
+                height: 48px;
+                position: absolute;
+                left: 50px;
+                top: 60%;
+                opacity: 0;
+                transition: all .5s ease-in-out 0s;
+            }
+            .sag{
+                width: 48px;
+                height: 48px;
+                position: absolute;
+                right: 50px;
+                top: 60%;
+                opacity: 0;
+                transition: all .5s ease-in-out 0s;
+            }
+            .solalani:hover .sol{
+                opacity: 0.8;
+            }
+            .sagalani:hover .sag{
+                opacity: 0.8;
+            }
+
+
+        </style>
+    </head>
+    <body onload="calistir()"> 
+        <div id="slaytalani">
+            <img id="resim" src="1.jpg" width="1000" height="350" style="border:none;"/>
+            <div class="solalani"><img onclick="resimdegistir(-1)" class="sol" src="solok.png" width="48" height="48" style="cursor:pointer;"></div>
+            <div class="sagalani"><img onclick="resimdegistir(1)" class="sag" src="sagok.png" width="48" height="48" style="cursor:pointer;"></div>
+
+
+        </div>
+        <script type="text/javascript" language="javascript">
+        var resimsiresi     =   1;
+        var toplamresim     =   10;
+        function resimdegistir(deger) {
+            var resim   = document.getElementById("resim");
+            resimsiresi = resimsiresi + deger;
+                if (resimsiresi>toplamresim) {
+                    resimsiresi = 1;
+                }
+                if (resimsiresi<1) {
+                    resimsiresi =   toplamresim;
+                }
+            resim.src       =   resimsiresi + ".jpg";
+            clearInterval(zaman);
+           zaman   = window.setInterval(function calistir() {
+            var resim   = document.getElementById("resim");
+            resimsiresi = resimsiresi + 1;
+                if (resimsiresi>toplamresim) {
+                    resimsiresi = 1;
+                }
+                if (resimsiresi<1) {
+                    resimsiresi =   toplamresim;
+                }
+            resim.src       =   resimsiresi + ".jpg";
+            }, 1500)
+
+        }
+
+
+            var zaman   = window.setInterval(function calistir() {
+            var resim   = document.getElementById("resim");
+            resimsiresi = resimsiresi+1;
+                if (resimsiresi>toplamresim) {
+                    resimsiresi = 1;
+                }
+                if (resimsiresi<1) {
+                    resimsiresi =   toplamresim;
+                }
+                resim.src       =   resimsiresi + ".jpg";
+            }, 1500)
+        
+        
+        </script>
+
+
+
+    </body>
+</html>
